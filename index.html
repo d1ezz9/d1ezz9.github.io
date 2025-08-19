@@ -62,7 +62,6 @@
         let mute = false;
         let night = false;
         const DEGREE = Math.PI/180;
-        const GAME_SPEED_MODIFIER = 0.5; // Добавляем модификатор скорости игры
 
         // LOAD SPRITE SHEET
         const sprite_sheet = new Image();
@@ -217,7 +216,7 @@
             },
 
             update: function() {
-                this.period = (state.current == state.getReady) ? 12 : 8; // Увеличиваем период анимации в 2 раза
+                this.period = (state.current == state.getReady) ? 6 : 4;
                 this.frame += frames % this.period == 0 ? 1 : 0;
                 this.frame = this.frame % this.animation.length; 
 
@@ -300,7 +299,7 @@
             update: function() {
                 if(state.current != state.game) return;
 
-                if(frames % 160 == 0) { // Увеличиваем интервал генерации труб в 2 раза
+                if(frames % 80 == 0) {
                     this.position.push({
                         x: cvs.width,
                         y: this.maxYPos * (Math.random() + 1),
@@ -429,7 +428,7 @@
                     }
                 }
 
-                this.period = 12; // Увеличиваем период анимации в 2 раза
+                this.period = 6;
                 this.frame += frames % this.period == 0 ? 1 : 0;
                 this.frame = this.frame % this.animation.length; 
             }
@@ -790,7 +789,7 @@
             },
             
             update: function() {
-                this.period = 14; // Увеличиваем период анимации в 2 раза
+                this.period = 7;
                 this.frame += frames % this.period == 0 ? 1 : 0;
                 this.frame = this.frame % this.animation.length; 
 
@@ -956,14 +955,14 @@
             foreground.y = cvs.height * 0.861;
             foreground.w = cvs.width * 0.7;
             foreground.h = foreground.w * 0.46;
-            foreground.dx = cvs.width * 0.007 * GAME_SPEED_MODIFIER; // Уменьшаем скорость
+            foreground.dx = cvs.width * 0.007;
 
             bird.x = cvs.width * 0.290;
             bird.y = cvs.height * 0.395;
             bird.w = cvs.width * 0.117;
             bird.h = cvs.height * 0.059;
-            bird.gravity = cvs.height * 0.0006 * GAME_SPEED_MODIFIER; // Уменьшаем гравитацию
-            bird.jump = cvs.height * 0.01 * GAME_SPEED_MODIFIER; // Уменьшаем силу прыжка
+            bird.gravity = cvs.height * 0.0006;
+            bird.jump = cvs.height * 0.03;
             bird.radius_x = cvs.width * 0.052;
             bird.radius_y = cvs.height * 0.026;
 
@@ -971,7 +970,7 @@
             pipes.h = cvs.height * 0.888;
             pipes.gap = cvs.height * 0.177;
             pipes.maxYPos = -(cvs.height * 0.350);
-            pipes.dx = cvs.width * 0.007 * GAME_SPEED_MODIFIER; // Уменьшаем скорость труб
+            pipes.dx = cvs.width * 0.007;
 
             home.logo.x = cvs.width * 0.098;
             home.logo.y = cvs.height * 0.279;
@@ -979,7 +978,7 @@
             home.logo.h = cvs.height * 0.109; 
             home.logo.MAXY = cvs.height * 0.279 - home.logo.h/7;
             home.logo.MINY = cvs.height * 0.279 + home.logo.h/7;
-            home.logo.dy = cvs.width * 0.0012 * GAME_SPEED_MODIFIER; // Уменьшаем скорость анимации логотипа
+            home.logo.dy = cvs.width * 0.0012;
             
             home.bird.x = cvs.width * 0.803;
             home.bird.y = cvs.height * 0.294;
