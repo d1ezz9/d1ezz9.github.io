@@ -1103,15 +1103,20 @@
         }
 
         // LOOP
-        function loop() {
-            update();
-            draw();
-            if(!gamePaused) frames++;
-            requestAnimationFrame(loop);
-        }
-
-        // Start the game loop
-        loop();
+		function loop() {
+    	// Update rate: 75FPS
+    		setTimeout(function() 
+    	{
+        	update();
+        	draw();
+        	// Increment frames only if game isn't paused
+        	if(!gamePaused)
+        	{
+            	frames++;
+        	}
+        	requestAnimationFrame(loop);
+    	}, (1 / 75) * 1000);
+	}
     </script>
 </body>
 </html>
